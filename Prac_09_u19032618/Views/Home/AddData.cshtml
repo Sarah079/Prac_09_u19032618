@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Add Data";
+}
+<h2>Add Numbers</h2>
+
+<body>
+    <table>
+        <tr>
+            <td>Number 1:</td> @* FROM MEMO write as &nbsp;Number 6:&nbsp; *@
+
+            <td><input type="number" for="val1" id="val1" /></td>
+
+        </tr>
+
+        <tr>
+            <td>Number 2:</td>
+            <td><input type="number" for="val2" id="val2" /></td>
+        </tr>
+
+        <tr>
+            <td>Number 3:</td>
+            <td><input type="number" for="val3" id="val3" /></td>
+        </tr>
+
+        <tr>
+            <td>Number 4:</td>
+            <td><input type="number" for="val4" id="val4" /></td>
+        </tr>
+
+        <tr>
+            <td>Number 5:</td>
+            <td><input type="number" for="val5" id="val5" /></td>
+        </tr>
+
+        <tr>
+            <td>Number 6:</td>
+            <td><input type="number" for="val6" id="val6" /></td>
+        </tr>
+
+    </table>
+    <button id="Submit">Submit</button>
+    <p></p>
+
+    <script>
+        //click submit
+        $("#Submit").click(function () {
+            //get numbers
+            var num1 = $("#val1").val;
+            var num2 = $("#val2").val;
+            var num3 = $("#val3").val;
+            var num4 = $("#val4").val;
+            var num5 = $("#val5").val;
+            var num6 = $("#val6").val;
+
+            //culculate total
+            var total = num1 + num2 + num3 + num4 + num5 + num6;
+            $("p").append(total);
+
+        });
+    </script>
+</body>
+
+@{
+    string fileName = @"Prac_09_u19032618\App_Data\Data.txt";
+    string num1 = Request["val1"];
+    string num2 = Request["val2"];
+    string num3 = Request["val3"];
+    string num4 = Request["val4"];
+    string num5 = Request["val5"];
+    string num6 = Request["val6"];
+    string Total = Request["total"];
+
+    //FROM MEMO
+
+    //var dataFile = Server.MapPath("~/App_Data/tempData.txt");
+    //File.AppendAllText(@dataFile, tempData);
+    //result = "Information saved.";
+    //tempTotal = total;
+
+}
+@if (File.Exists(fileName))
+{
+    Console.WriteLine("File exists.");
+
+    var userData = num1 + "," + num2 + "," + num3 + "," + num4 + "," + num5 + "," + num6 + "," + Total + Environment.NewLine; //correct
+}
+else
+{
+
+    Console.WriteLine("File does not exist.");
+
+}
+
+
+

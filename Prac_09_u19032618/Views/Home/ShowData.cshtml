@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Show Data";
+}
+<h2>@ViewBag.Title.</h2>
+
+@{
+    string fileName = @"Prac_09_u19032618\App_Data\Data.txt";
+    var physicalPath = Server.MapPath(fileName);
+    var DataMessage = "";
+    bool doesexist;
+    var fileContents = "";
+    var filelength = fileContents.Length;
+
+}
+@if (File.Exists(physicalPath))
+{
+    doesexist = true;
+    Console.WriteLine("File exists.");
+    fileContents = File.ReadAllText(physicalPath);
+}
+else
+{
+    doesexist = false;
+    DataMessage = "This file does not exist";
+    Console.WriteLine("File does not exist.");
+}
+
+
+
+<p id="DataMsg">@DataMessage</p>
+
+<table id="numbertable">
+    <tr>
+        <th>Number: 1</th>
+        <th>Number: 2</th>
+        <th>Number: 3</th>
+        <th>Number: 4</th>
+        <th>Number: 5</th>
+        <th>Number: 6</th>
+        <th>Sum Total</th>
+    </tr>
+    <tr>
+        @foreach(var item in physicalPath)
+            {
+                <td>@item</td>
+            }
+    </tr>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $("#numbertable").hide();
+        $("#DataMsg").hide();
+
+        if (@doesexist = true) {
+            $("#numbertable").show();
+        }
+        else {
+            $("#DataMsg").show();
+        }
+    });
+</script>
